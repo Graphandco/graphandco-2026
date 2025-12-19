@@ -2,6 +2,7 @@ version: "3.9"
 
 services:
    app:
+      container_name: graphandco-2026
       build:
          context: .
          dockerfile: Dockerfile
