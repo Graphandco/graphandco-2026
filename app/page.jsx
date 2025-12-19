@@ -39,7 +39,8 @@ const Page = () => {
                   <div className="hero-header">
                      <Copy
                         animateOnScroll={false}
-                        delay={isInitialLoad ? 5.75 : 0.75}
+                        // delay={isInitialLoad ? 5.75 : 0.75}
+                        delay={0.75}
                      >
                         <h1>Crafting Digital Worlds with a Bit of Mischief</h1>
                      </Copy>

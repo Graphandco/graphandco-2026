@@ -15,7 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
    return (
       <html lang="fr">
-         <body>
+         <body suppressHydrationWarning={true}>
             <ViewTransitions>
                <ClientLayout>{children}</ClientLayout>
             </ViewTransitions>
