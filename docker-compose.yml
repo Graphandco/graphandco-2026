@@ -1,14 +1,19 @@
-version: "3.9"
-
 services:
    app:
       container_name: graphandco-2026
       build:
          context: .
          dockerfile: Dockerfile
+      restart: unless-stopped
       ports:
          - "3006:3006"
       environment:
          NODE_ENV: production
          PORT: 3006
          HOSTNAME: 0.0.0.0
+      networks:
+         - web-network
+
+networks:
+   web-network:
+      external: true
