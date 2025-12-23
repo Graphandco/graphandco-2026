@@ -1,13 +1,16 @@
 services:
    app:
-      container_name: graphandco-2026
+      container_name: graphandco-2026-dev
       build:
          context: .
          dockerfile: Dockerfile.dev
+      restart: unless-stopped
       ports:
          - "3006:3006"
       volumes:
          - .:/app
          - /app/node_modules
+         - /app/.next
       environment:
          NODE_ENV: development
+         PORT: 3006

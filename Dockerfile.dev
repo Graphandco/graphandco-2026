@@ -1,17 +1,18 @@
 FROM node:20-alpine
 
-# Dossier de travail
 WORKDIR /app
 
-# Dépendances
-COPY package.json package-lock.json* ./
+# Copier les fichiers de dépendances
+COPY package*.json ./
+
+# Installer toutes les dépendances (y compris devDependencies)
 RUN npm install
 
-# Code
+# Copier le reste du code (sera monté en volume en dev, mais utile si tu build l'image)
 COPY . .
 
-# Port Next
+# Port Next.js dev
 EXPOSE 3006
 
-# Lancer Next en dev
+# Lancer Next en mode dev avec hot reload
 CMD ["npm", "run", "dev"]
