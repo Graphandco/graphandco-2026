@@ -35,9 +35,9 @@ const Menu = ({ pageRef }) => {
 
    const menuItems = [
       { label: "Accueil", route: "/" },
-      { label: "Work", route: "/work" },
-      { label: "Studio", route: "/studio" },
-      { label: "Stories", route: "/stories" },
+      { label: "Projets", route: "/work" },
+      { label: "Tarifs", route: "/studio" },
+      { label: "Blog", route: "/stories" },
       { label: "Contact", route: "/contact" },
    ];
 

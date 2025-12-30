@@ -41,6 +41,8 @@
 }
 
 :root {
+   --font-outfit: var(--font-outfit);
+   --font-urbanist: var(--font-urbanist);
    --primary: oklch(0.79 0.16 78.93);
    --base-100: #e3e3db;
    --base-200: #ccccc4;
@@ -62,13 +64,14 @@
 }
 
 * {
-   margin: 0;
-   padding: 0;
    box-sizing: border-box;
    -webkit-tap-highlight-color: transparent;
 }
 
 body {
+   --text-font: var(--font-urbanist);
+   --title-font: var(--font-outfit);
+   font-family: var(--text-font);
    background-color: #000;
    color: var(--base-400);
    overflow-x: hidden;
@@ -84,7 +87,7 @@ body {
    margin-inline: auto;
 }
 
-h1,
+/* h1,
 h2,
 h3,
 h4 {
@@ -93,7 +96,7 @@ h4 {
    font-weight: 900;
    line-height: 0.9;
    letter-spacing: -0.125rem;
-}
+} */
 
 /* h1 {
    font-size: 8rem;
@@ -113,7 +116,7 @@ h4 {
    font-size: 4rem;
    letter-spacing: -0.1rem;
 } */
-
+/* 
 p {
    font-family: "PP Neue Montreal";
    font-size: 1.25rem;
@@ -153,7 +156,7 @@ p.cap {
    padding: 2rem;
    max-width: 2000px;
    margin: 0 auto;
-}
+} */
 
 .page-transition-overlay {
    position: fixed;
@@ -171,6 +174,6 @@ p.cap {
 }
 
 .page-transition-overlay .overlay__path {
-   fill: var(--base-500);
+   fill: var(--primary);
    stroke: none;
 }

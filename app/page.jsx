@@ -34,7 +34,7 @@ const Page = () => {
          {/* <Preloader /> */}
          <Hero />
 
-         <div className="container bg-white text-2xl">
+         <div className="wrapper bg-white text-2xl">
             <Copy animateOnScroll={true} delay={0.25}>
                <p>
                   Un site internet doit véhiculer votre image, vos valeurs,
