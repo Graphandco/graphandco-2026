@@ -6,8 +6,80 @@ import { SplitText } from "gsap/all";
 import { useGSAP } from "@gsap/react";
 import { useLenis } from "lenis/react";
 import { useViewTransition } from "@/hooks/useViewTransition";
+import { MotionConfig, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+
+const VARIANTS = {
+   top: {
+      open: {
+         rotate: ["0deg", "0deg", "45deg"],
+         top: ["35%", "50%", "50%"],
+      },
+      closed: {
+         rotate: ["45deg", "0deg", "0deg"],
+         top: ["50%", "50%", "35%"],
+      },
+   },
+   middle: {
+      open: {
+         rotate: ["0deg", "0deg", "-45deg"],
+      },
+      closed: {
+         rotate: ["-45deg", "0deg", "0deg"],
+      },
+   },
+   bottom: {
+      open: {
+         rotate: ["0deg", "0deg", "45deg"],
+         bottom: ["35%", "50%", "50%"],
+         left: "50%",
+      },
+      closed: {
+         rotate: ["45deg", "0deg", "0deg"],
+         bottom: ["50%", "50%", "35%"],
+         left: "calc(50% + 10px)",
+      },
+   },
+};
+
+const AnimatedHamburgerButton = ({ active }) => {
+   return (
+      <MotionConfig
+         transition={{
+            duration: 0.3,
+            ease: "easeInOut",
+         }}
+      >
+         <motion.button
+            initial={false}
+            animate={active ? "open" : "closed"}
+            className="relative h-16 w-12"
+         >
+            <motion.span
+               variants={VARIANTS.top}
+               className="absolute h-0.5 w-10 bg-current rounded-4xl"
+               style={{ y: "-50%", left: "50%", x: "-50%", top: "35%" }}
+            />
+            <motion.span
+               variants={VARIANTS.middle}
+               className="absolute h-0.5 w-10 bg-current rounded-4xl"
+               style={{ left: "50%", x: "-50%", top: "50%", y: "-50%" }}
+            />
+            <motion.span
+               variants={VARIANTS.bottom}
+               className="absolute h-0.5 w-7 bg-current rounded-4xl"
+               style={{
+                  x: "-50%",
+                  y: "50%",
+                  bottom: "35%",
+                  left: "calc(50% + 8px)",
+               }}
+            />
+         </motion.button>
+      </MotionConfig>
+   );
+};
 
 gsap.registerPlugin(useGSAP, SplitText);
 
@@ -19,8 +91,6 @@ const Menu = ({ pageRef }) => {
    const linkHighlighterRef = useRef(null);
    const menuLinksRef = useRef([]);
    const menuLinkContainersRef = useRef([]);
-   const openLabelRef = useRef(null);
-   const closeLabelRef = useRef(null);
    const menuColsRef = useRef([]);
 
    const splitTextInstances = useRef([]);
@@ -331,22 +401,10 @@ const Menu = ({ pageRef }) => {
       const menuLinks = menuLinksRef.current;
       const linkHighlighter = linkHighlighterRef.current;
       const menuLinksWrapper = menuLinksWrapperRef.current;
-      const openLabel = openLabelRef.current;
-      const closeLabel = closeLabelRef.current;
       const menuCols = menuColsRef.current;
 
       if (!isMenuOpen) {
-         gsap.to(openLabel, {
-            y: "-100%",
-            duration: 1,
-            ease: "power3.out",
-         });
-
-         gsap.to(closeLabel, {
-            y: "-100%",
-            duration: 1,
-            ease: "power3.out",
-         });
+         setIsMenuOpen(true);
 
          gsap.to(menuOverlay, {
             clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
@@ -354,8 +412,6 @@ const Menu = ({ pageRef }) => {
             ease: "expo.out",
             onComplete: () => {
                gsap.set(".menu-link", { overflow: "visible" });
-
-               setIsMenuOpen(true);
                setIsMenuAnimating(false);
             },
          });
@@ -396,17 +452,7 @@ const Menu = ({ pageRef }) => {
             });
          });
       } else {
-         gsap.to(openLabel, {
-            y: "0%",
-            duration: 1,
-            ease: "power3.out",
-         });
-
-         gsap.to(closeLabel, {
-            y: "0%",
-            duration: 1,
-            ease: "power3.out",
-         });
+         setIsMenuOpen(false);
 
          gsap.to(menuImage, {
             y: "-25svh",
@@ -451,7 +497,6 @@ const Menu = ({ pageRef }) => {
                currentX.current = 0;
                targetX.current = 0;
 
-               setIsMenuOpen(false);
                setIsMenuAnimating(false);
             },
          });
@@ -460,7 +505,7 @@ const Menu = ({ pageRef }) => {
 
    return (
       <>
-         <nav>
+         <nav className="">
             <div>
                <Link
                   href="/"
@@ -481,15 +526,7 @@ const Menu = ({ pageRef }) => {
             </div>
 
             <div className="nav-toggle" ref={navToggleRef} onClick={toggleMenu}>
-               <div className="nav-toggle-wrapper">
-                  <p ref={openLabelRef} className="open-label">
-                     Menu
-                  </p>
-
-                  <p ref={closeLabelRef} className="close-label">
-                     Close
-                  </p>
-               </div>
+               <AnimatedHamburgerButton active={isMenuOpen} />
             </div>
          </nav>
 

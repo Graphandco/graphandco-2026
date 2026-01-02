@@ -32,11 +32,11 @@ const Hero = () => {
    //    };
    const { isPhone, isMobile, isTablet, isDesktop } = useResponsive();
    function getHeroImageSource() {
-      if (isPhone) return "/hero/bg-hero-phone.avif";
-      if (isMobile) return "/hero/bg-hero-mobile.avif";
-      if (isTablet) return "/hero/bg-hero-tablet.avif";
-      if (isDesktop) return "/hero/bg-hero-desktop.webp";
-      return "/hero/bg-hero-desktop.webp";
+      if (isPhone) return "/home/bg-hero-phone.avif";
+      if (isMobile) return "/home/bg-hero-mobile.avif";
+      if (isTablet) return "/home/bg-hero-tablet.avif";
+      if (isDesktop) return "/home/bg-hero-desktop.webp";
+      return "/home/bg-hero-desktop.webp";
    }
 
    const heroImageSource = getHeroImageSource();
@@ -61,7 +61,7 @@ const Hero = () => {
             </div>
          </motion.div>
 
-         <div className="wrapper absolute inset-0 flex flex-col justify-center px-5">
+         <div className="wrapper-full absolute inset-0 flex flex-col justify-center">
             {/* <div className="mb-8 flex flex-col items-end gap-1 text-white font-semibold">
                <div>Interface utilisateur</div>
                <div>Expérience utilisateur</div>

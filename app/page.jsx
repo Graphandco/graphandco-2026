@@ -11,6 +11,8 @@ import Copy from "@/components/Copy/Copy";
 import React, { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { StickySection } from "@/components/Home/StickySection";
+import { HomeContentText } from "@/components/Home/HomeContentText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,32 +35,11 @@ const Page = () => {
       <>
          {/* <Preloader /> */}
          <Hero />
+         <section>
+            <StickySection />
+            <HomeContentText />
+         </section>
 
-         <div className="wrapper bg-white text-2xl">
-            <Copy animateOnScroll={true} delay={0.25}>
-               <p>
-                  Un site internet doit véhiculer votre image, vos valeurs,
-                  votre histoire, bref votre ADN… tout en apportant des réponses
-                  claires aux besoins de votre(vos) cibles. Or, pour faire la
-                  différence, et au-delà de la qualité des contenus (textes et
-                  visuels), un bon site internet doit aussi et surtout offrir
-                  une expérience utilisateur séduisante. Son ergonomie, son
-                  interface, son responsive design, sa vitesse d’affichage… :
-                  derrière ces impératifs techniques, c’est toute une mécanique
-                  de précision que seul un pro peut élaborer. Oui, encore une
-                  fois, c’est un métier. Vous l’aurez compris : créer un site
-                  aujourd’hui, c’est conjuguer stratégie, technique et
-                  expérience utilisateur. Place aux pros ! Graph & Co vous
-                  accompagne avec méthode pour vous aider à atteindre vos
-                  objectifs en ligne. Notre talent : vous doter d’un site
-                  performant et efficace auprès de votre clientèle. Quels que
-                  soient votre niveau initial et les fonctionnalités de votre
-                  site, nous vous apprendrons à administrer votre site comme un
-                  pro. D’ailleurs, nos clients apprennent vite puisque,
-                  paraît-il, nous sommes pédagogues ;-)
-               </p>
-            </Copy>
-         </div>
          <Showreel />
 
          <section className="featured-work">

@@ -15,10 +15,10 @@
    --text-8xl: clamp(48px, 12vw, 120px);
    --text-8xl--line-height: 1.1;
 
-   --text-7xl: 6rem;
+   --text-7xl: clamp(40px, 10vw, 100px);
    --text-7xl--line-height: 1;
 
-   --text-6xl: 5rem;
+   --text-6xl: clamp(36px, 8vw, 80px);
    --text-6xl--line-height: 1;
 
    --text-5xl: 4rem;
@@ -69,12 +69,16 @@
 }
 
 body {
-   --text-font: var(--font-urbanist);
-   --title-font: var(--font-outfit);
+   --text-font: var(--font-outfit);
+   --title-font: var(--font-urbanist);
    font-family: var(--text-font);
+   font-size: 18px;
    background-color: #000;
    color: var(--base-400);
    overflow-x: hidden;
+}
+.title-font {
+   font-family: var(--title-font);
 }
 .wrapper {
    max-width: 1280px;
@@ -86,7 +90,11 @@ body {
    padding-inline: 5vw;
    margin-inline: auto;
 }
-
+.wrapper-full {
+   width: 100%;
+   padding-inline: 5vw;
+   margin-inline: auto;
+}
 /* h1,
 h2,
 h3,

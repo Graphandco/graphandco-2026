@@ -2,34 +2,22 @@ nav {
    position: fixed;
    top: 0;
    left: 0;
+   /* transform: translateX(-50%); */
    width: 100vw;
-   padding: 2rem;
+   padding: 10px 5vw;
    color: var(--base-100);
    display: flex;
    justify-content: space-between;
-   z-index: 2;
+   align-items: center;
+   z-index: 99;
 }
 
 nav .nav-toggle {
    cursor: pointer;
-}
-
-nav .nav-toggle-wrapper {
-   position: relative;
    display: flex;
-   flex-direction: column;
    align-items: center;
-   height: 1.25rem;
-   overflow: hidden;
-   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-}
-
-nav .open-label {
-   transform: translateY(0);
-}
-
-nav .close-label {
-   transform: translateY(0);
+   justify-content: center;
+   color: var(--base-100);
 }
 
 .menu-overlay {
@@ -41,7 +29,7 @@ nav .close-label {
    overflow: hidden;
    background-color: var(--base-400);
    color: var(--base-100);
-   z-index: 1;
+   z-index: 98;
    will-change: clip-path;
 }
 
@@ -162,7 +150,7 @@ nav .close-label {
    left: 0;
    width: 400px;
    height: 0.75rem;
-   background-color: var(--base-500);
+   background-color: var(--primary);
    will-change: transform, width;
 }
 
