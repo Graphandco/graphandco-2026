@@ -156,7 +156,7 @@ p.cap {
    font-size: 0.9rem;
    font-weight: 900;
    -webkit-font-smoothing: antialiased;
-}
+}*/
 
 .container {
    width: 100%;
@@ -164,7 +164,7 @@ p.cap {
    padding: 2rem;
    max-width: 2000px;
    margin: 0 auto;
-} */
+}
 
 .page-transition-overlay {
    position: fixed;

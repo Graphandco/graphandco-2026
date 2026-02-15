@@ -1,5 +1,4 @@
 "use client";
-import "./Copy.css";
 import React, { useRef } from "react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
@@ -77,6 +76,15 @@ export default function Copy({ children, animateOnScroll = true, delay = 0 }) {
                   }
                   element.style.textIndent = "0";
                }
+
+               split.lines.forEach((line) => {
+                  line.classList.add(
+                     "relative",
+                     "will-change-transform",
+                     "pb-[0.2em]",
+                     "-mb-[0.2em]"
+                  );
+               });
 
                lines.current.push(...split.lines);
             });

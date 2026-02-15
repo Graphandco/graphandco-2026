@@ -2,19 +2,22 @@ import Copy from "@/components/Copy/Copy";
 import Button from "@/components/Button/Button";
 import { Mail } from "lucide-react";
 import Image from "next/image";
+import FadeInOnView from "@/components/FadeInOnView";
 export const HomeContentText = () => {
    return (
       <div className="pt-16 sm:pt-32 pb-12 relative z-20 bg-white">
          <div className="wrapper grid gap-10 bg-white border-l border-r border-neutral-200">
-            <h2 className="text-4xl">
-               <span>Qu’est-ce qu’un bon site web ?</span>
-               <br />
-               <span className="text-neutral-500">
-                  Et surtout, pourquoi faire appel à un pro ?
-               </span>
-            </h2>
+            <Copy animateOnScroll={true} delay={0.25}>
+               <h2 className="text-4xl">
+                  <span>Qu’est-ce qu’un bon site web ?</span>
+                  <br />
+                  <span className="text-neutral-500">
+                     Et surtout, pourquoi faire appel à un pro ?
+                  </span>
+               </h2>
+            </Copy>
             <div className="grid sm:grid-cols-[2fr_3fr] gap-4 sm:gap-14  justify-center items-center">
-               <div animateOnScroll={true} delay={0.25}>
+               <FadeInOnView>
                   <Image
                      src="/home/avatar-regis.webp"
                      alt="Graph and Co Régis avatar"
@@ -24,7 +27,7 @@ export const HomeContentText = () => {
                      priority
                      sizes="(max-width: 640px) 100vw, 400px"
                   />
-               </div>
+               </FadeInOnView>
                <div>
                   <Copy animateOnScroll={true} delay={0.25}>
                      <p>

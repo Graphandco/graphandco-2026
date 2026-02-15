@@ -5,8 +5,8 @@ services:
          context: .
          dockerfile: Dockerfile
       restart: unless-stopped
-      ports:
-         - "3006:3006"
+      # ports:
+      #    - "3006:3006"
       networks:
          - web-network
 

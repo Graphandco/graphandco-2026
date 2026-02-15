@@ -44,6 +44,8 @@ const VARIANTS = {
 };
 
 const AnimatedHamburgerButton = ({ active }) => {
+   const buttonRef = useRef(null);
+
    return (
       <MotionConfig
          transition={{
@@ -52,9 +54,28 @@ const AnimatedHamburgerButton = ({ active }) => {
          }}
       >
          <motion.button
+            ref={buttonRef}
             initial={false}
             animate={active ? "open" : "closed"}
-            className="relative h-16 w-12"
+            onHoverStart={() => {
+               if (active && buttonRef.current) {
+                  gsap.to(buttonRef.current, {
+                     scale: 1.1,
+                     duration: 0.2,
+                     ease: "easeOut",
+                  });
+               }
+            }}
+            onHoverEnd={() => {
+               if (active && buttonRef.current) {
+                  gsap.to(buttonRef.current, {
+                     scale: 1,
+                     duration: 0.2,
+                     ease: "easeOut",
+                  });
+               }
+            }}
+            className="relative h-16 w-12 group cursor-pointer"
          >
             <motion.span
                variants={VARIANTS.top}
@@ -68,7 +89,7 @@ const AnimatedHamburgerButton = ({ active }) => {
             />
             <motion.span
                variants={VARIANTS.bottom}
-               className="absolute h-0.5 w-7 bg-current rounded-4xl"
+               className="absolute h-0.5 w-7 group-hover:w-10 transition-all duration-300 ease-out bg-current rounded-4xl"
                style={{
                   x: "-50%",
                   y: "50%",
